@@ -18,10 +18,9 @@ dependencies {
     testCompile "org.eclipse.jetty:jetty-server:${jetty_version}"
     testCompile "org.eclipse.jetty:jetty-webapp:${jetty_version}"
 }
-
 task copyLibs(type: Copy) {
     into 'testlibs/WEB-INF/libs'
-    from configurations.runtime	
+    from configurations.runtime
 }
 
 war {
