@@ -103,15 +103,16 @@ public class EurekaBootStrap implements ServletContextListener {
 
     /**
      * Initializes Eureka, including syncing up with other Eureka peers and publishing the registry.
-     *
+     *  初始化以及其他Eureka注册
      * @see
      * javax.servlet.ServletContextListener#contextInitialized(javax.servlet.ServletContextEvent)
      */
     @Override
     public void contextInitialized(ServletContextEvent event) {
         try {
-            initEurekaEnvironment();
-            initEurekaServerContext();
+
+            initEurekaEnvironment();// 获得环境配置
+            initEurekaServerContext();// 获得环境配置
 
             ServletContext sc = event.getServletContext();
             sc.setAttribute(EurekaServerContext.class.getName(), serverContext);
@@ -122,7 +123,7 @@ public class EurekaBootStrap implements ServletContextListener {
     }
 
     /**
-     * Users can override to initialize the environment themselves.
+     * users can override to initialize the environment themselves.
      */
     protected void initEurekaEnvironment() throws Exception {
         logger.info("Setting the eureka configuration..");
