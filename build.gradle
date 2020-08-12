@@ -1,13 +1,8 @@
 
 buildscript {
-    repositories {jcenter()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
+    repositories {jcenter()}
     dependencies {
         classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.+'
-        classpath "gradle.plugin.org.akhikhl.gretty:gretty:2.0.0"
     }
 }
 
@@ -52,7 +47,6 @@ allprojects {
 }
 
 subprojects {
-    apply plugin: "org.akhikhl.gretty"
     apply plugin: 'nebula.netflixoss'
     apply plugin: 'java'
     group = "com.netflix.${githubProjectName}"
