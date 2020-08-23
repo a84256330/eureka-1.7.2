@@ -193,7 +193,7 @@ public class EurekaBootStrap implements ServletContextListener {
                     eurekaClient
             );
         }
-
+        // 处理peer相关节点
         PeerEurekaNodes peerEurekaNodes = getPeerEurekaNodes(
                 registry,
                 eurekaServerConfig,
@@ -201,7 +201,7 @@ public class EurekaBootStrap implements ServletContextListener {
                 serverCodecs,
                 applicationInfoManager
         );
-
+        // 完成eureka server 上下文的构建初始化
         serverContext = new DefaultEurekaServerContext(
                 eurekaServerConfig,
                 serverCodecs,
@@ -209,9 +209,9 @@ public class EurekaBootStrap implements ServletContextListener {
                 peerEurekaNodes,
                 applicationInfoManager
         );
-
+        // 将初始化的配置文件放到Holder中，等待其他使用
         EurekaServerContextHolder.initialize(serverContext);
-
+        // 启动peerEurekaNodes
         serverContext.initialize();
         logger.info("Initialized server context");
 
